@@ -43,16 +43,6 @@ switch ($modx->event->name) {
         $redirector->save();
         break;
     }
-    /*if ($mode == 'new') {
-        if ($resource->context_key == $context) break;
-        if ($redirector = $modx->getObject("modResource", $redirectorParams)) {
-            $redirector->set("uri", "");
-            $redirector->set("uri_override", 0);
-            $redirector->set("deleted", 1);
-            $redirector->save();
-            break;
-        }
-    }*/
     break;
 
   case "OnPageNotFound":
