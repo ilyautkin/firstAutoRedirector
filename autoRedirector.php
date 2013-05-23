@@ -50,7 +50,7 @@ switch ($modx->event->name) {
     $uri = str_replace($modx->getOption("site_url"),"",$url);
     if (substr($uri, 0, 1) == "/") $uri = substr($uri, 1);
     $redirector = $modx->getObject('modResource', array("uri" => $uri));
-    if ($redirector) $modx->sendRedirect($modx->makeUrl($redirector->get('longtitle')));
+    if ($redirector) $modx->sendRedirect($modx->makeUrl($redirector->get('longtitle')),array('responseCode' => 'HTTP/1.1 301 Moved Permanently'));
     
     if (substr($url, -5) == ".html") $url = substr($url, 0, -5);
     if (substr($url, -1) == "/")     $url = substr($url, 0, -1);
@@ -58,6 +58,6 @@ switch ($modx->event->name) {
     $url_array = explode('/', $url);
     $alias = array_pop($url_array);
     $res = $modx->getObject('modResource', array("alias" => $alias));
-    if ($res) $modx->sendRedirect($modx->makeUrl($res->get('id')));
+    if ($res) $modx->sendRedirect($modx->makeUrl($res->get('id')),array('responseCode' => 'HTTP/1.1 301 Moved Permanently'));
     break;
 }
